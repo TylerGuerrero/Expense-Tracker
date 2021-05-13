@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react'
 import { TransactionContext } from '../contexts/TransactionContext'
+import { addTransaction } from '../actions/TransactionAction'
 import uuid from 'uuid/v4'
 
 const AddTransaction = () => {
     const [text, setText] = useState("");
     const [amount, setAmount] = useState(0);
-    const { addTransaction } = useContext(TransactionContext);
+    const { dispatch } = useContext(TransactionContext);
 
     const handleSumbit = (e) => {
         e.preventDefault();
-        addTransaction({text, amount: +amount, id: uuid()});
+        dispatch(addTransaction({text, amount: +amount, id: uuid()}));
         setText("");
         setAmount(0);
     }

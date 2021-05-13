@@ -5,9 +5,12 @@ import { ADD_TRANSACTION, DELETE_TRANSACTION } from '../types/types'
 
 // reducer has previous state and action
 // it take the action and create a brand new state
+
 // state is immutable
 // when changing it it will use a previous copy of it 
 // create a brand new one with updated data
+
+// return has to be the same as the original state
 
 export const transactionReducer = (state, action) => {
     switch(action.type) {

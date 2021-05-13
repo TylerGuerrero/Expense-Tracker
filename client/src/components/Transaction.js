@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { TransactionContext } from '../contexts/TransactionContext'
+import { deleteTransaction } from '../actions/TransactionAction'
 
 const Transaction = ({ transaction }) => {
-    const { deleteTransaction } = useContext(TransactionContext);
+    const { dispatch } = useContext(TransactionContext);
 
     const sign = transaction.amount < 0 ? '-' : '+'
     
@@ -11,7 +12,7 @@ const Transaction = ({ transaction }) => {
             { transaction.text }
             <span>{sign}${Math.abs(transaction.amount)} </span>
             <button className="delete-btn" 
-            onClick={() => deleteTransaction(transaction.id)}>x</button>
+            onClick={() => dispatch(deleteTransaction(transaction.id))}>x</button>
         </li>
     )
 }
